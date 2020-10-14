@@ -1,3 +1,8 @@
+# Technologies
+
+- Angular 10
+- ASP.NET Core 3.1 API
+
 # Pj5Daxone
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
