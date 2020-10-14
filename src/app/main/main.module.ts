@@ -36,6 +36,26 @@ const routes: Routes = [
             (m) => m.LoginRegisterModule
           ),
       },
+      {
+        path: 'cart-list',
+        loadChildren: () =>
+          import('./cart/cart.module').then((m) => m.CartModule),
+      },
+      {
+        path: 'wishlist',
+        loadChildren: () =>
+          import('./wishlist/wishlist.module').then((m) => m.WishlistModule),
+      },
+      {
+        path: 'checkout',
+        loadChildren: () =>
+          import('./checkout/checkout.module').then((m) => m.CheckoutModule),
+      },
+      {
+        path: 'post',
+        loadChildren: () =>
+          import('./post/post.module').then((m) => m.PostModule),
+      },
     ],
   },
 ];
