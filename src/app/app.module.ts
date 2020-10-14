@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
+  {
+    path: 'client',
+    loadChildren: () => import('./main/main.module').then((m) => m.MainModule),
+  },
 ];
 @NgModule({
   declarations: [AppComponent, FooterComponent],
