@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 /* End import Component */
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'client',
     loadChildren: () => import('./main/main.module').then((m) => m.MainModule),
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
   },
 ];
 @NgModule({
