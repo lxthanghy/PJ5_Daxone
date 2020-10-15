@@ -1,11 +1,10 @@
 /* Import Module */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 /* End import Module */
 /* Import Component */
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 /* End import Component */
@@ -30,7 +29,10 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [AppComponent, FooterComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
