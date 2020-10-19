@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 /*End Import Module */
 /* Import Component */
@@ -61,6 +62,6 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [MainComponent, HeaderComponent, MobileOffCanvasComponent],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, HttpClientModule, RouterModule.forChild(routes)],
 })
 export class MainModule {}

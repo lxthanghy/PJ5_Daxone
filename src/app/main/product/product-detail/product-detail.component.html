@@ -11,19 +11,30 @@
     </div>
   </div>
 </div>
-<div class="product-details-area pt-90 pb-90">
+<div class="product-details-area pt-90 pb-90" *ngIf="product">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-md-6">
-        <div class="product-details-img-left">
-          <img class="zoompro" src="../../../../assets/images/product-details/pro-details-1.jpg"
-            data-zoom-image="assets/images/product-details/product-detalis-bl1.jpg" alt="product-details-img">
+        <div class="product-details-img">
+          <div class="single-img-gallery zoompro-span mb-30">
+            <img class="zoompro" [attr.src]="'../../../../assets/uploads/product/' + product.imageUrl"
+              [attr.data-zoom-image]="'../../../../assets/uploads/product/' + product.imageUrl" alt="" />
+            <span>-29%</span>
+          </div>
+          <div class="single-img-gallery zoompro-span mb-30">
+            <img class="zoompro" src="assets/images/product-details/product-detalis-l2.jpg"
+              data-zoom-image="assets/images/product-details/product-detalis-bl2.jpg" alt="" />
+          </div>
+          <div class="single-img-gallery zoompro-span mb-30">
+            <img class="zoompro" src="assets/images/product-details/product-detalis-l3.jpg"
+              data-zoom-image="assets/images/product-details/product-detalis-bl3.jpg" alt="" />
+          </div>
         </div>
       </div>
-      <div class="col-lg-6 col-md-6">
+      <div class="col-lg-6 col-md-6 sidebar-active sidebar-active-left">
         <div class="product-details-content pro-details-content-modify">
-          <span>Life Style</span>
-          <h2>LaaVista Depro, FX 829 v1</h2>
+          <span>{{product.supplierName}}</span>
+          <h2>{{product.name}}</h2>
           <div class="product-ratting-review">
             <div class="product-ratting">
               <i class="la la-star"></i>
@@ -36,31 +47,9 @@
               <span>40+ Reviews</span>
             </div>
           </div>
-          <div class="pro-details-color-wrap">
-            <span>Color:</span>
-            <div class="pro-details-color-content">
-              <ul>
-                <li class="green"></li>
-                <li class="yellow"></li>
-                <li class="red"></li>
-                <li class="blue"></li>
-              </ul>
-            </div>
-          </div>
-          <div class="pro-details-size">
-            <span>Size:</span>
-            <div class="pro-details-size-content">
-              <ul>
-                <li><a href="#">s</a></li>
-                <li><a href="#">m</a></li>
-                <li><a href="#">xl</a></li>
-                <li><a href="#">xxl</a></li>
-              </ul>
-            </div>
-          </div>
           <div class="pro-details-price-wrap">
             <div class="product-price">
-              <span>$210.00</span>
+              <span>{{product.price | currency : "VND" : true}}</span>
               <span class="old">$230.00</span>
             </div>
             <div class="dec-rang"><span>- 30%</span></div>
@@ -86,24 +75,23 @@
     </div>
   </div>
 </div>
-<div class="description-review-wrapper pb-90">
+<div class="description-review-wrapper pb-90" *ngIf="product">
   <div class="container">
     <div class="row">
       <div class="ml-auto mr-auto col-lg-10">
         <div class="dec-review-topbar nav mb-40">
-          <a data-toggle="tab" href="#des-details1">Description</a>
-          <a class="active" data-toggle="tab" href="#des-details2">Specification</a>
-          <a data-toggle="tab" href="#des-details3">Reviews</a>
+          <a data-toggle="tab" href="#des-details1">Mô tả</a>
+          <a class="active" data-toggle="tab" href="#des-details2">Thông tin chi tiết</a>
+          <a data-toggle="tab" href="#des-details3">Đánh giá</a>
         </div>
         <div class="tab-content dec-review-bottom">
           <div id="des-details1" class="tab-pane">
             <div class="description-wrap">
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text. The point of using Lorem Ipsum is that it has a more-or-less normal
-                distribution of letters, Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text. It is a long established fact that a reader
-                will be distracted by the readable content of a page when looking at its layout. The point of using
-                Lorem Ipsum is that it has a more-or-less normal distribution of letters,</p>
+              <p *ngIf="product.description != null; else Desnull">{{product.description}}</p>
+              <ng-template #Desnull>
+                <p>Không có mô tả nào</p>
+              </ng-template>
+
             </div>
           </div>
           <div id="des-details2" class="tab-pane active">
@@ -111,36 +99,40 @@
               <table>
                 <tbody>
                   <tr>
-                    <td class="width1">Name / Model</td>
-                    <td>LaaVista Depro, FX 829 v1</td>
+                    <td class="width1">Tên sản phẩm</td>
+                    <td>{{product.name}}</td>
                   </tr>
                   <tr>
-                    <td>Type</td>
-                    <td>Categories</td>
+                    <td class="width1">Nhà cung cấp</td>
+                    <td>{{product.categoryName}}</td>
                   </tr>
                   <tr>
-                    <td class="width1">Models</td>
-                    <td>FX 829 v1</td>
+                    <td class="width1">Loại sản phẩm</td>
+                    <td>{{product.supplierName}}</td>
                   </tr>
                   <tr>
-                    <td class="width1">Categories</td>
-                    <td>Product Type</td>
+                    <td class="width1">Bảo hành</td>
+                    <td>{{product.warranty}} năm</td>
                   </tr>
                   <tr>
-                    <td class="width1">Size</td>
-                    <td>60’’ x 40’’</td>
+                    <td class="width1">Frame (Khung) </td>
+                    <td>{{product.frame}}</td>
                   </tr>
                   <tr>
-                    <td class="width1">Display Port</td>
-                    <td>Multi</td>
+                    <td class="width1">Rims (Vành)</td>
+                    <td>{{product.rims}}</td>
                   </tr>
                   <tr>
-                    <td class="width1">Media</td>
-                    <td>Brightside</td>
+                    <td class="width1">Tires (Lốp)</td>
+                    <td>{{product.tires}}</td>
                   </tr>
                   <tr>
-                    <td class="width1">Color</td>
-                    <td>Black, White</td>
+                    <td class="width1">Weight (Trọng lượng)</td>
+                    <td>{{product.weight}}</td>
+                  </tr>
+                  <tr>
+                    <td class="width1">Weight Limit (Tải trọng tối đa)</td>
+                    <td>{{product.weightLimit}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -152,7 +144,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-5">
                   <div class="dec-review-img-wrap">
                     <div class="dec-review-img">
-                      <img src="../../../../assets/images/product-details/review-1.png" alt="review">
+                      <img src="assets/images/product-details/review-1.png" alt="review">
                     </div>
                     <div class="dec-client-name">
                       <h4>Jonathon Doe</h4>
@@ -188,7 +180,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-5">
                   <div class="dec-review-img-wrap">
                     <div class="dec-review-img">
-                      <img src="../../../../assets/images/product-details/review-2.png" alt="review">
+                      <img src="assets/images/product-details/review-2.png" alt="review">
                     </div>
                     <div class="dec-client-name">
                       <h4>Jonathon Doe</h4>
@@ -224,7 +216,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-5">
                   <div class="dec-review-img-wrap">
                     <div class="dec-review-img">
-                      <img src="../../../../assets/images/product-details/review-3.png" alt="review">
+                      <img src="assets/images/product-details/review-3.png" alt="review">
                     </div>
                     <div class="dec-client-name">
                       <h4>Jonathon Doe</h4>
