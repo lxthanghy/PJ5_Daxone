@@ -2,6 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
 /* End import Module */
 /* Import Component */
 import { AppComponent } from './app.component';
@@ -31,6 +33,7 @@ const routes: Routes = [
   declarations: [AppComponent, FooterComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
   providers: [],

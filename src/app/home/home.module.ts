@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 /*End Import Module */
 
 /* Import Component */
@@ -31,6 +32,6 @@ const routes: Routes = [
     ProductComponent,
     DiscountComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, HttpClientModule, RouterModule.forChild(routes)],
 })
 export class HomeModule {}
