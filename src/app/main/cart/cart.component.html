@@ -62,8 +62,14 @@
                   <a [routerLink]="['/home']">Tiếp tục mua hàng</a>
                 </div>
                 <div class="cart-clear">
-                  <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
-                  <p-button (click)="clearCart()" icon="pi pi-trash" label="Xoá sạch giỏ hàng"></p-button>
+                  <p-confirmDialog #cd [style]="{width: '50vw'}" [baseZIndex]="10000">
+                    <p-footer>
+                      <button type="button" pButton icon="pi pi-check" label="Có" (click)="cd.accept()"></button>
+                      <button type="button" pButton icon="pi pi-times" label="Không" (click)="cd.reject()"></button>
+                    </p-footer>
+                  </p-confirmDialog>
+                  <p-button *ngIf="products.length > 0" (click)="clearCart()" icon="pi pi-trash"
+                    label="Xoá sạch giỏ hàng"></p-button>
                 </div>
               </div>
             </div>
@@ -149,3 +155,4 @@
     </div>
   </div>
 </div>
+<p-toast></p-toast>

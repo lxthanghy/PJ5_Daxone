@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast';
 /*End Import Module */
 
 /* Import Component */
@@ -34,6 +35,11 @@ const routes: Routes = [
     DiscountComponent,
     CartWrapComponent,
   ],
-  imports: [CommonModule, HttpClientModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    RouterModule.forChild(routes),
+    ToastModule,
+  ],
 })
 export class HomeModule {}

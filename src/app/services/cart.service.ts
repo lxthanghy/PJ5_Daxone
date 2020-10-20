@@ -53,6 +53,6 @@ export class CartService {
   }
   clearCart() {
     localStorage.clear();
-    this.productsCart.next(null);
+    this.productsCart.next([]);
   }
 }

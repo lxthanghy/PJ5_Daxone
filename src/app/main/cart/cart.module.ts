@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CartComponent } from './cart.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-
+import { ToastModule } from 'primeng/toast';
 const routes: Routes = [
   {
     path: '',
@@ -13,6 +13,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [CartComponent],
-  imports: [CommonModule, ConfirmDialogModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    ConfirmDialogModule,
+    ToastModule,
+    RouterModule.forChild(routes),
+  ],
 })
 export class CartModule {}

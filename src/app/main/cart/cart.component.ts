@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
-  providers: [ConfirmationService],
+  providers: [ConfirmationService, MessageService],
 })
 export class CartComponent implements OnInit {
-  products: any[];
+  products: any[] = [];
   totalMoney: number;
   constructor(
     private readonly cartService: CartService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -26,6 +28,11 @@ export class CartComponent implements OnInit {
   }
   deleteProduct(id: number): void {
     this.cartService.deleteProduct(id);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Thông báo',
+      detail: 'Xoá thành công',
+    });
   }
   updateProduct(id: number, quantity: number): void {
     this.cartService.updateProduct(id, quantity);

@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../models/product';
 import { first } from 'rxjs/operators';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
+  providers: [MessageService],
 })
 export class ProductComponent implements OnInit {
   constructor(
     private readonly productService: ProductService,
-    private readonly cartService: CartService
+    private readonly cartService: CartService,
+    private readonly messageService: MessageService
   ) {}
   products: any;
   ngOnInit(): void {
@@ -26,6 +28,10 @@ export class ProductComponent implements OnInit {
   addToCart(product: any): void {
     //console.log(product);
     this.cartService.addToCart(product);
-    alert('Thêm thành công !');
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Thông báo',
+      detail: 'Thêm thành công',
+    });
   }
 }
