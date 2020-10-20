@@ -14,9 +14,9 @@ export class CartService {
   }
   addToCart(product: any): void {
     product.quantity = 1;
-    let local_storage: any;
+    let local_storage: any[];
     if (localStorage.getItem('carts') == null) {
-      local_storage = [product];
+      local_storage.push(product);
     } else {
       local_storage = JSON.parse(localStorage.getItem('carts'));
       let checkProduct: boolean = true;
@@ -32,8 +32,13 @@ export class CartService {
     localStorage.setItem('carts', JSON.stringify(local_storage));
     this.productsCart.next(local_storage);
   }
-  getProductsCart() {
-    var local_storage = localStorage.getItem('carts');
+  getProducts(): any[] {
+    let local_storage = localStorage.getItem('carts');
     return local_storage == null ? [] : JSON.parse(local_storage);
+  }
+  deleteProduct(id: number) {
+    let local_storage = this.getProducts().filter((p) => p.id != id);
+    localStorage.setItem('carts', JSON.stringify(local_storage));
+    this.productsCart.next(local_storage);
   }
 }
