@@ -24,7 +24,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       )
       .subscribe((product) => {
         this.product = product;
-        console.log(this.product);
+        //console.log(this.product);
       });
   }
   ngAfterViewInit(): void {}

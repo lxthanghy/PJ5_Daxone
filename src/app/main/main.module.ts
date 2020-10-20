@@ -62,7 +62,12 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  declarations: [MainComponent, HeaderComponent, MobileOffCanvasComponent, CartWrapComponent],
+  declarations: [
+    MainComponent,
+    HeaderComponent,
+    MobileOffCanvasComponent,
+    CartWrapComponent,
+  ],
   imports: [CommonModule, HttpClientModule, RouterModule.forChild(routes)],
 })
 export class MainModule {}

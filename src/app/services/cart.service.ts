@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -14,7 +13,7 @@ export class CartService {
   }
   addToCart(product: any): void {
     product.quantity = 1;
-    let local_storage: any[];
+    let local_storage: any[] = [];
     if (localStorage.getItem('carts') == null) {
       local_storage.push(product);
     } else {
@@ -40,5 +39,20 @@ export class CartService {
     let local_storage = this.getProducts().filter((p) => p.id != id);
     localStorage.setItem('carts', JSON.stringify(local_storage));
     this.productsCart.next(local_storage);
+  }
+  updateProduct(id: number, quantity: number) {
+    let products = JSON.parse(localStorage.getItem('carts'));
+    for (let p of products) {
+      if (p.id == id) {
+        p.quantity = quantity;
+        break;
+      }
+    }
+    localStorage.setItem('carts', JSON.stringify(products));
+    this.productsCart.next(products);
+  }
+  clearCart() {
+    localStorage.clear();
+    this.productsCart.next(null);
   }
 }

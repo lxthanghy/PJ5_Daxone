@@ -40,13 +40,15 @@
                   </td>
                   <td class="product-quantity">
                     <div class="cart-plus-minus">
-                      <input class="cart-plus-minus-box" type="text" name="qtybutton" value="{{product.quantity}}"
-                        min="1">
+                      <div class="dec qtybutton">-</div>
+                      <input #quantity class="cart-plus-minus-box" type="number" name="qtybutton"
+                        (change)="updateProduct(product.id, quantity.value)" [value]="product.quantity" min="1">
+                      <div class="inc qtybutton">+</div>
                     </div>
                   </td>
                   <td class="product-subtotal">{{ product.quantity * product.price | currency : "VND" : true }}</td>
                   <td class="product-remove">
-                    <a><i class="la la-pencil"></i></a>
+                    <a (click)="updateProduct(product.id, quantity.value)"><i class="la la-pencil"></i></a>
                     <a (click)="deleteProduct(product.id)"><i class="la la-close"></i></a>
                   </td>
                 </tr>
@@ -60,7 +62,8 @@
                   <a [routerLink]="['/home']">Tiếp tục mua hàng</a>
                 </div>
                 <div class="cart-clear">
-                  <button>Xoá sạch giỏ hàng</button>
+                  <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+                  <p-button (click)="clearCart()" icon="pi pi-trash" label="Xoá sạch giỏ hàng"></p-button>
                 </div>
               </div>
             </div>

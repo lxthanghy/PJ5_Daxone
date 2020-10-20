@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /* End import Module */
 /* Import Component */
 import { AppComponent } from './app.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
   declarations: [AppComponent, FooterComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
