@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main.component';
 import { HeaderComponent } from './header/header.component';
 import { MobileOffCanvasComponent } from './mobile-off-canvas/mobile-off-canvas.component';
+import { CartWrapComponent } from './cart-wrap/cart-wrap.component';
 /*End Import Component */
 const routes: Routes = [
   {
@@ -61,7 +62,7 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  declarations: [MainComponent, HeaderComponent, MobileOffCanvasComponent],
+  declarations: [MainComponent, HeaderComponent, MobileOffCanvasComponent, CartWrapComponent],
   imports: [CommonModule, HttpClientModule, RouterModule.forChild(routes)],
 })
 export class MainModule {}

@@ -12,6 +12,7 @@ const httpOptions = {
 export class ProductService {
   private API_URL = 'http://localhost:5000/api';
   constructor(private readonly http: HttpClient) {}
+
   GetAll() {
     const url = `${this.API_URL}/products`;
     return this.http.get(url);

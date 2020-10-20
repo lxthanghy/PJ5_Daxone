@@ -13,6 +13,7 @@ import { SliderComponent } from './slider/slider.component';
 import { BannerComponent } from './banner/banner.component';
 import { ProductComponent } from './product/product.component';
 import { DiscountComponent } from './discount/discount.component';
+import { CartWrapComponent } from './cart-wrap/cart-wrap.component';
 /* End Import Component */
 
 /* Other */
@@ -31,6 +32,7 @@ const routes: Routes = [
     BannerComponent,
     ProductComponent,
     DiscountComponent,
+    CartWrapComponent,
   ],
   imports: [CommonModule, HttpClientModule, RouterModule.forChild(routes)],
 })
