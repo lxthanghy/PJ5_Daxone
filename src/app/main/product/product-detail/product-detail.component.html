@@ -2,12 +2,12 @@
   style="background-image:url(../../../assets/uploads/breadcrumb/banner_commont.jpg);">
   <div class="container">
     <div class="breadcrumb-content text-center">
-      <h2>shop page</h2>
+      <h2>Chi tiết sản phẩm</h2>
       <ul>
         <li>
-          <a href="index.html">Home</a>
+          <a [routerLink]="['/home']">Home</a>
         </li>
-        <li class="active">shop </li>
+        <li class="active" *ngIf="product">{{product.name}} </li>
       </ul>
     </div>
   </div>
@@ -58,7 +58,7 @@
           <div class="pro-details-quality">
             <div class="cart-plus-minus">
               <div class="dec qtybutton">-</div>
-              <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" min="1">
+              <input #Inputquantity class="cart-plus-minus-box" type="number" name="qtybutton" value="1" min="1">
               <div class="inc qtybutton">+</div>
             </div>
           </div>
@@ -71,7 +71,7 @@
             </div>
           </div>
           <div class="pro-details-buy-now btn-hover btn-hover-radious">
-            <a href="#">Add To Cart</a>
+            <a (click)="addToCart(product, Inputquantity.value)">Add To Cart</a>
           </div>
         </div>
       </div>
