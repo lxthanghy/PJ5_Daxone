@@ -36,6 +36,11 @@ export class CartComponent implements OnInit {
   }
   updateProduct(id: number, quantity: number): void {
     this.cartService.updateProduct(id, quantity);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Thông báo',
+      detail: 'Cập nhật thành công',
+    });
   }
   clearCart(): void {
     this.confirmationService.confirm({
