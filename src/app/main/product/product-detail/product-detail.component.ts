@@ -3,10 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { first, map, switchMap } from 'rxjs/operators';
 import { ProductService } from '../../../services/product.service';
 import { CartService } from '../../../services/cart.service';
+import { MessageService } from 'primeng/api';
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
+  providers: [MessageService],
 })
 export class ProductDetailComponent implements OnInit {
   product: any;
@@ -14,7 +17,8 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
-    private readonly cartService: CartService
+    private readonly cartService: CartService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -34,5 +38,10 @@ export class ProductDetailComponent implements OnInit {
       promotionPrice: product.promotionPrice,
     };
     this.cartService.addToCart(pro, parseInt(quantity));
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Thông báo',
+      detail: 'Thêm thành công',
+    });
   }
 }
