@@ -49,6 +49,13 @@ const routes: Routes = [
           import('./wishlist/wishlist.module').then((m) => m.WishlistModule),
       },
       {
+        path: 'my-account',
+        loadChildren: () =>
+          import('./my-account/my-account.module').then(
+            (m) => m.MyAccountModule
+          ),
+      },
+      {
         path: 'checkout',
         loadChildren: () =>
           import('./checkout/checkout.module').then((m) => m.CheckoutModule),
