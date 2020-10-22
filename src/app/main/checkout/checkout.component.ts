@@ -48,7 +48,7 @@ export class CheckoutComponent implements OnInit {
       .checkout(order)
       .pipe(first())
       .subscribe((res) => {
-        console.log(res);
+        //console.log(res);
         if (res > 0) {
           this.cartService.clearCart();
           this.messageService.add({
@@ -58,7 +58,7 @@ export class CheckoutComponent implements OnInit {
           });
           setTimeout(() => {
             this.router.navigateByUrl('/home');
-          }, 800);
+          }, 1000);
         }
       });
   }

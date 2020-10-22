@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -14,7 +15,8 @@ export class CartComponent implements OnInit {
   constructor(
     private readonly cartService: CartService,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +51,14 @@ export class CartComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.cartService.clearCart();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Thông báo',
+          detail: 'Đã xoá sạch',
+        });
+        setTimeout(() => {
+          this.router.navigateByUrl('/home');
+        }, 1000);
       },
       reject: () => {},
     });
