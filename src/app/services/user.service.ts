@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({
@@ -12,9 +12,12 @@ const httpOptions = {
 })
 export class UserService {
   private API_URL = 'http://localhost:5000/api';
-  private userLogin = new Subject();
+  private userLogin = new BehaviorSubject({});
   public user$ = this.userLogin.asObservable();
   constructor(private readonly http: HttpClient) {}
+  public get userValue(): any {
+    return this.userLogin.value;
+  }
   login(login: any): Observable<any> {
     const url = `${this.API_URL}/users/login`;
     var log = JSON.stringify(login);
@@ -31,5 +34,9 @@ export class UserService {
     const url = `${this.API_URL}/users/register`;
     var userString = JSON.stringify(user);
     return this.http.post<any>(url, userString, httpOptions);
+  }
+  logout() {
+    localStorage.removeItem('user');
+    this.userLogin.next(null);
   }
 }

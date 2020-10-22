@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { MobileOffCanvasComponent } from './mobile-off-canvas/mobile-off-canvas.component';
 import { CartWrapComponent } from './cart-wrap/cart-wrap.component';
 /*End Import Component */
+import { AuthGuard } from '../guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
@@ -47,6 +48,7 @@ const routes: Routes = [
         path: 'wishlist',
         loadChildren: () =>
           import('./wishlist/wishlist.module').then((m) => m.WishlistModule),
+        canActivate: [AuthGuard],
       },
       {
         path: 'my-account',
@@ -54,6 +56,7 @@ const routes: Routes = [
           import('./my-account/my-account.module').then(
             (m) => m.MyAccountModule
           ),
+        canActivate: [AuthGuard],
       },
       {
         path: 'checkout',

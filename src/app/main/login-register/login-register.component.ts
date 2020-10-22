@@ -81,7 +81,14 @@ export class LoginRegisterComponent implements OnInit {
             });
             this.clearFormLogin();
           } else {
-            this.router.navigateByUrl('/home');
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Thông báo',
+              detail: 'Đăng nhập thành công',
+            });
+            setTimeout(() => {
+              this.router.navigateByUrl('/home');
+            }, 1000);
           }
         },
         (error) => {
